@@ -1,4 +1,4 @@
-import './modal.css';
+import './RegisterLoginModal.css';
 
 export const RegisterLoginModal = ({ handlestate, show, children }) => {
     const showHideClassName = show ? "modal display-block" : "modal display-none";

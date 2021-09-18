@@ -5,11 +5,16 @@ import Register from "./Register"
 import { useRecoilState } from 'recoil'
 import { isLogged } from "../Recoil/globalState"
 import Login from "./Login"
+import Navdropdownmodal from "../modals/Navdropdownmodal"
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faUser, faArrowDown } from '@fortawesome/free-solid-svg-icons'
+import Dropdown from "./Dropdown"
 
 export default function NavigationBar(props) {
     const [LoggedInUser] = useRecoilState(isLogged)
     const [ShowModalLogin, setShowModalLogin] = useState(false)
     const [ShowModalRegister, setShowModalRegister] = useState(false)
+    const [ShowDropDown, setShowDropDown] = useState(false)
 
     if (LoggedInUser) {
         return (
@@ -33,7 +38,15 @@ export default function NavigationBar(props) {
                 <div style={userdivStyle} className="userinfodiv">
                     <button style={loginbuttonStyle} onClick={() => setShowModalLogin(!ShowModalLogin)}>Log In</button>
                     <button style={registerbuttonStyle} onClick={() => setShowModalRegister(!ShowModalRegister)}>Sign Up</button>
-                    <h1 style={{margin: "0"}}>Drop</h1>
+                    <div>
+                        <div onClick={() => {setShowDropDown(!ShowDropDown)}}>
+                            <FontAwesomeIcon icon={faUser} style={{color: "grey", fontSize:"20px"}}  />
+                            <FontAwesomeIcon icon={faArrowDown} style={{color: "grey", fontSize:"22px"}}  />
+                        </div>
+                        <Navdropdownmodal LoggedInUser={LoggedInUser} show={ShowDropDown} handlestate={() => {setShowDropDown(!ShowDropDown)}}>
+                            <h1>TEST</h1>
+                        </Navdropdownmodal>
+                    </div>
                 </div>
                 <RegisterLoginModal show={ShowModalLogin} handlestate={() => setShowModalLogin(!ShowModalLogin)}>
                     <Login handlestate={() => setShowModalLogin(!ShowModalLogin)}/>
@@ -57,7 +70,8 @@ const navbarStyle = {
     display: "flex",
     justifyContent: "space-evenly",
     alignItems: "center",
-    borderBottom: "grey thin solid"
+    borderBottom: "grey thin solid",
+    position: "absolute"
 }
 const navsearchStyle = {
     height: "1rem",

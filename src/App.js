@@ -22,7 +22,12 @@ export default function App() {
       axios.post("http://localhost:5000/api/token", {}, config)
         .then((res) => {
           setLoggedInUser({user: res.data.name, token: token})
-          console.log(res)})
+          console.log(res)
+        })
+        .catch((err) => {
+          setLoggedInUser("")
+          localStorage.removeItem("token")
+        })
     }
   }, [])
 
