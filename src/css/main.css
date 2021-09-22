@@ -1,0 +1,36 @@
+.main-content {
+    display: flex;
+}
+.postandfilter {
+    width: 63%;
+}
+.filter {
+    background-color: #212222;
+    border-radius: 5px;
+    border: solid grey thin;
+    padding: 5px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+}
+.flex:hover {
+    background-color: rgb(94, 86, 86);
+}
+.filter-text {
+    margin: 0px;
+    color: white;
+    font-size: 15px;
+}
+.flex {
+    display: flex;
+    align-items: center;
+    margin: 10px;
+    padding: 4px 10px;
+    border-radius: 15px;
+    background-color: rgb(59, 52, 52);
+}
+.filter-icon {
+    color: white;
+    margin: 0px 5px;
+    font-size: 15px;
+}

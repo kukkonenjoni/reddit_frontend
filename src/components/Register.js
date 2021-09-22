@@ -28,7 +28,7 @@ export default function Register(props) {
     }
     return(
         <div id="login-box">
-            <div class="left">
+            <div className="left">
                 <form onSubmit={submitForm}>
                     <h1>Sign up</h1>
                     <input type="text" name="username" placeholder="Username" onChange={(e) => setUser(e.target.value)}/>
@@ -39,14 +39,14 @@ export default function Register(props) {
                 </form>
             </div>
             
-            <div class="right">
-                <span class="loginwith">Sign in with<br />social network</span>
+            <div className="right">
+                <span className="loginwith">Sign in with<br />social network</span>
                 
-                <button class="social-signin facebook">Log in with facebook</button>
-                <button class="social-signin twitter">Log in with Twitter</button>
-                <button class="social-signin google">Log in with Google+</button>
+                <button className="social-signin facebook">Log in with facebook</button>
+                <button className="social-signin twitter">Log in with Twitter</button>
+                <button className="social-signin google">Log in with Google+</button>
             </div>
-            <div class="or">OR</div>
+            <div className="or">OR</div>
         </div>
     )
 }

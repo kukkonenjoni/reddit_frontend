@@ -14,10 +14,11 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 500px;
+    height: 300px;
     margin-top: 68px;
-    width: 350px;
-    margin-right: 70px;
+    width: 225px;
+    margin-right: 100px;
+    z-index: 1;
   }
   .display-none1 {
     display: none;

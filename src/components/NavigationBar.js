@@ -8,13 +8,14 @@ import Login from "./Login"
 import Navdropdownmodal from "../modals/Navdropdownmodal"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUser, faArrowDown } from '@fortawesome/free-solid-svg-icons'
-import Dropdown from "./Dropdown"
+import Navdropdown from "./Navdropdown"
 
 export default function NavigationBar(props) {
     const [LoggedInUser] = useRecoilState(isLogged)
     const [ShowModalLogin, setShowModalLogin] = useState(false)
     const [ShowModalRegister, setShowModalRegister] = useState(false)
     const [ShowDropDown, setShowDropDown] = useState(false)
+
 
     if (LoggedInUser) {
         return (
@@ -44,7 +45,7 @@ export default function NavigationBar(props) {
                             <FontAwesomeIcon icon={faArrowDown} style={{color: "grey", fontSize:"22px"}}  />
                         </div>
                         <Navdropdownmodal LoggedInUser={LoggedInUser} show={ShowDropDown} handlestate={() => {setShowDropDown(!ShowDropDown)}}>
-                            <h1>TEST</h1>
+                            <Navdropdown />
                         </Navdropdownmodal>
                     </div>
                 </div>
@@ -71,7 +72,6 @@ const navbarStyle = {
     justifyContent: "space-evenly",
     alignItems: "center",
     borderBottom: "grey thin solid",
-    position: "absolute"
 }
 const navsearchStyle = {
     height: "1rem",
