@@ -22,7 +22,7 @@ export default function Subredditaddpost() {
                 headers: { Authorization: `Bearer ${LoggedInUser.token}` }
             }
             axios.post(`https://fast-dawn-38066.herokuapp.com/api/r/${subreddit}/post`, newPost, config)
-                .then((res) => {window.location.reload(true)})
+                .then((res) => console.log(res))
         } else {
             window.alert("Please Add Title!")
         }

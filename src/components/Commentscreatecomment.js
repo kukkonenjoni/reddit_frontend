@@ -19,7 +19,6 @@ export default function Commentscreatecomment({LoggedInUser}) {
             }
             axios.post(`https://fast-dawn-38066.herokuapp.com/api/r/${subreddit}/comments/${post}`, newComment, config)
                 .then((res) => {console.log(res)})
-                .then((res) => {window.location.reload(true)})
         }
     }
 

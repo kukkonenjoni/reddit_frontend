@@ -40,7 +40,7 @@ export default function Commentscomments({ data }) {
                 headers: { Authorization: `Bearer ${LoggedInUser.token}`}
             }
             axios.post(`https://fast-dawn-38066.herokuapp.com/api/r/${subreddit}/upvote/${post}/${sid}`, newUpvote, config)
-                .then((res) => res.status !== 400 ? window.location.reload(true) : "")
+                .then((res) => console.log(res))
         } else {
             alert("please log in to upvote")
         }
@@ -55,7 +55,7 @@ export default function Commentscomments({ data }) {
                 headers: { Authorization: `Bearer ${LoggedInUser.token}`}
             }
             axios.post(`https://fast-dawn-38066.herokuapp.com/api/r/${subreddit}/downvote/${post}/${sid}`, newDownvote, config)
-                .then((res) => res.status !== 400 ? window.location.reload(true) : "")
+                .then((res) => console.log(res))
         } else {
             alert("please log in to upvote")
         }
