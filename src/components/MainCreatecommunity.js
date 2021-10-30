@@ -6,7 +6,7 @@ import ModalCreateCommunity from './ModalCreateCommunity';
 
 export default function MainCreatecommunity() {
 
-    const [LoggedInUser, setLoggedInUser] = useRecoilState(isLogged)
+    const [LoggedInUser] = useRecoilState(isLogged)
     const [CreateCommunity, setCreateCommunity] = useState(false)
 
 

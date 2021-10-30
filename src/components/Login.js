@@ -4,11 +4,10 @@ import { isLogged } from "../Recoil/globalState"
 import axios from 'axios'
 
 
-export default function Login(props) {
+export default function Login() {
     const [LoggedInUser, setLoggedInUser] = useRecoilState(isLogged)
     const [User, setUser] = useState("")
     const [Password, setPassword] = useState("")
-    const [Errors, setErrors] = useState([])
 
     const submitForm = (event) => {
         event.preventDefault()
@@ -16,7 +15,7 @@ export default function Login(props) {
             name: User,
             password: Password
         }
-        axios.post("http://localhost:5000/api/authentication/login", newUser)
+        axios.post("https://fast-dawn-38066.herokuapp.com/api/authentication/login", newUser)
             .then((data) => {if (data) {
                 setLoggedInUser({user: data.data.user,id: data.data.id, token: data.data.token})
                 localStorage.setItem('token', data.data.token)

@@ -17,7 +17,7 @@ export default function Commentspopup({Comment, LoggedInUser}) {
             const config = {
                 headers: { Authorization: `Bearer ${LoggedInUser.token}`}
             }
-            axios.post(`http://localhost:5000/api/r/${subreddit}/comments/${post}/${Comment}`, newComment, config)
+            axios.post(`https://fast-dawn-38066.herokuapp.com/api/r/${subreddit}/comments/${post}/${Comment}`, newComment, config)
                 .then((res) => {console.log(res)})
                 .then((res) => {window.location.reload(true)})
         }

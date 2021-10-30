@@ -20,7 +20,7 @@ export default function Subredditposts({ data }) {
             const config = {
                 headers: { Authorization: `Bearer ${LoggedInUser.token}`}
             }
-            axios.post(`http://localhost:5000/api/r/${sreddit}/upvote/${spost}`, newUpvote, config)
+            axios.post(`https://fast-dawn-38066.herokuapp.com/api/r/${sreddit}/upvote/${spost}`, newUpvote, config)
                 .then((res) => res.status !== 400 ? window.location.reload(true) : "")
         } else {
             alert("please log in to upvote")
@@ -34,7 +34,7 @@ export default function Subredditposts({ data }) {
             const config = {
                 headers: { Authorization: `Bearer ${LoggedInUser.token}`}
             }
-            axios.post(`http://localhost:5000/api/r/${sreddit}/downvote/${spost}`, newDownvote, config)
+            axios.post(`https://fast-dawn-38066.herokuapp.com/api/r/${sreddit}/downvote/${spost}`, newDownvote, config)
                 .then((res) => res.status !== 400 ? window.location.reload(true) : "")
                 
         } else {

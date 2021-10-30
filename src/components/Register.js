@@ -20,7 +20,7 @@ export default function Register(props) {
                 email: Email,
                 password: Password
             }
-            await axios.post("http://localhost:5000/api/authentication/register", new_user)
+            await axios.post("https://fast-dawn-38066.herokuapp.com/api/authentication/register", new_user)
                 .then((data) => {props.handlestate()})
         }
     }
