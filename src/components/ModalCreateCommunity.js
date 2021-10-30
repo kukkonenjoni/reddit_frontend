@@ -23,6 +23,7 @@ export default function ModalCreateCommunity() {
         axios.post("https://fast-dawn-38066.herokuapp.com/api/r/createcommunity", newSubreddit, config)
             .then(res => res.status == 200 ?  setCommunity("") : "")
             .then(res => res.status == 200 ?  setDescription("") : "")
+            .then(() => window.location.replace(`https://617da0fbaa7a1a000813e8b3--pensive-jackson-17f322.netlify.app/r/${Community}`))
 
     }
 

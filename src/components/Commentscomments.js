@@ -41,6 +41,7 @@ export default function Commentscomments({ data }) {
             }
             axios.post(`https://fast-dawn-38066.herokuapp.com/api/r/${subreddit}/upvote/${post}/${sid}`, newUpvote, config)
                 .then((res) => console.log(res))
+                .then(() => window.location.reload(true))
         } else {
             alert("please log in to upvote")
         }
@@ -56,6 +57,7 @@ export default function Commentscomments({ data }) {
             }
             axios.post(`https://fast-dawn-38066.herokuapp.com/api/r/${subreddit}/downvote/${post}/${sid}`, newDownvote, config)
                 .then((res) => console.log(res))
+                .then(() => window.location.reload(true))
         } else {
             alert("please log in to upvote")
         }

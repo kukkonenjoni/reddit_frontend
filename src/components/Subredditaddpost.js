@@ -23,6 +23,7 @@ export default function Subredditaddpost() {
             }
             axios.post(`https://fast-dawn-38066.herokuapp.com/api/r/${subreddit}/post`, newPost, config)
                 .then((res) => console.log(res))
+                .then(() => window.location.reload(true))
         } else {
             window.alert("Please Add Title!")
         }

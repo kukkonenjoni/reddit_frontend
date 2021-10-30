@@ -19,7 +19,7 @@ export default function Commentscreatecomment({LoggedInUser}) {
             }
             axios.post(`https://fast-dawn-38066.herokuapp.com/api/r/${subreddit}/comments/${post}`, newComment, config)
                 .then((res) => {console.log(res)})
-                .then(() => setComment(""))
+                .then(() => window.location.reload(true))
         } else {
             window.alert("empty comment")
         }

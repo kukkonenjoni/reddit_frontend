@@ -20,6 +20,7 @@ export default function Commentspopup({Comment, LoggedInUser}) {
             axios.post(`https://fast-dawn-38066.herokuapp.com/api/r/${subreddit}/comments/${post}/${Comment}`, newComment, config)
                 .then((res) => {console.log(res)})
                 .then(() => setNestedComment(""))
+                .then(() => window.location.reload(true))
         }
     }
 
