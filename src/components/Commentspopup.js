@@ -19,13 +19,14 @@ export default function Commentspopup({Comment, LoggedInUser}) {
             }
             axios.post(`https://fast-dawn-38066.herokuapp.com/api/r/${subreddit}/comments/${post}/${Comment}`, newComment, config)
                 .then((res) => {console.log(res)})
+                .then(() => setNestedComment(""))
         }
     }
 
     return(
         <div>
             <form onSubmit={createcomment}>
-                <textarea onChange={(e) => setNestedComment(e.target.value)}></textarea>
+                <textarea onChange={(e) => setNestedComment(e.target.value)} value={NestedComment ? NestedComment : ""}></textarea>
                 <input type="submit" value="Reply"/>
             </form>
         </div>
