@@ -27,7 +27,7 @@ export default function App() {
       const config = {
         headers: { Authorization: `Bearer ${token}` }
     };
-      axios.post("http://localhost:5000/api/verifytoken", {}, config)
+      axios.post("https://fast-dawn-38066.herokuapp.com/api/verifytoken", {}, config)
         .then((res) => {
           setLoggedInUser({user: res.data.name, id:res.data.id, token: token})
         })

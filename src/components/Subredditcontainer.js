@@ -17,7 +17,7 @@ export default function Subredditcontainer() {
     const [LoggedInUser] = useRecoilState(isLogged)
 
     const { status, error, data, isFetching } = useQuery("subredditPosts", async () => {
-        const { data } = await axios.get(`http://localhost:5000/api/r/${subreddit}`)
+        const { data } = await axios.get(`https://fast-dawn-38066.herokuapp.com/api/r/${subreddit}`)
         return data
     });
     return(

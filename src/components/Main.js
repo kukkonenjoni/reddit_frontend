@@ -1,7 +1,6 @@
 import Postnav from "./Postnav"
 import Filter from "./Filter"
 import Posts from "./Posts"
-import MainSidemenu from "./MainSidemenu"
 import MainCreatecommunity from "./MainCreatecommunity"
 
 export default function Main() {

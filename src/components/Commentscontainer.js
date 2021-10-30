@@ -8,7 +8,7 @@ export default function Commentscontainer() {
 
     const { subreddit, post } = useParams()
     const { status, error, data, isFetching } = useQuery("Fullpostinfo", async () => {
-        const { data} = await axios.get(`http://localhost:5000/api/r/${subreddit}/comments/${post}`)
+        const { data} = await axios.get(`https://fast-dawn-38066.herokuapp.com/api/r/${subreddit}/comments/${post}`)
         return data
     });
 

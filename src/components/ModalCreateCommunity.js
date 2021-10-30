@@ -6,7 +6,7 @@ import { Redirect } from "react-router"
 
 export default function ModalCreateCommunity() {
 
-    const [LoggedInUser, setLoggedInUser] = useRecoilState(isLogged)
+    const [LoggedInUser] = useRecoilState(isLogged)
     const [Community, setCommunity] = useState("")
     const [Description, setDescription] = useState("")
 
@@ -20,8 +20,7 @@ export default function ModalCreateCommunity() {
         const config = {
             headers: { Authorization: `Bearer ${LoggedInUser.token}` }
         };
-        axios.post("http://localhost:5000/api/r/createcommunity", newSubreddit, config)
-            .then(res => res.status == 200 ? window.location.href = `http://localhost:3000/r/${Community}` : console.log(res.status))
+        axios.post("https://fast-dawn-38066.herokuapp.com/api/r/createcommunity", newSubreddit, config)
             .then(res => res.status == 200 ?  setCommunity("") : "")
             .then(res => res.status == 200 ?  setDescription("") : "")
 

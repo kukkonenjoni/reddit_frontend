@@ -12,7 +12,7 @@ export default function Subredditposts({ data }) {
     const { url } = useRouteMatch()
     const [LoggedInUser] = useRecoilState(isLogged)
 
-    const upvote = (sreddit, spost, sup, sdown) => {
+    const upvote = (sreddit, spost) => {
         if (LoggedInUser) {
             const newUpvote = {
                 createdBy: LoggedInUser.id
@@ -20,13 +20,13 @@ export default function Subredditposts({ data }) {
             const config = {
                 headers: { Authorization: `Bearer ${LoggedInUser.token}`}
             }
-            axios.post(`http://localhost:5000/api/r/${sreddit}/upvote/${spost}`, newUpvote, config)
+            axios.post(`https://fast-dawn-38066.herokuapp.com/api/r/${sreddit}/upvote/${spost}`, newUpvote, config)
                 .then((res) => res.status !== 400 ? window.location.reload(true) : "")
         } else {
             alert("please log in to upvote")
         }
     }
-    const downvote = (sreddit, spost, sup, sdown) => {
+    const downvote = (sreddit, spost) => {
         if (LoggedInUser) {
             const newDownvote = {
                 createdBy: LoggedInUser.id
@@ -34,7 +34,7 @@ export default function Subredditposts({ data }) {
             const config = {
                 headers: { Authorization: `Bearer ${LoggedInUser.token}`}
             }
-            axios.post(`http://localhost:5000/api/r/${sreddit}/downvote/${spost}`, newDownvote, config)
+            axios.post(`https://fast-dawn-38066.herokuapp.com/api/r/${sreddit}/downvote/${spost}`, newDownvote, config)
                 .then((res) => res.status !== 400 ? window.location.reload(true) : "")
                 
         } else {

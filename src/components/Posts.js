@@ -15,7 +15,7 @@ export default function Posts(props) {
     const [intervalMs, setintervalMs] = useState("")
 
     const { status, error, data } = useQuery("randomPosts", async () => {
-        const { data } = await axios.get('http://localhost:5000/api')
+        const { data } = await axios.get('https://fast-dawn-38066.herokuapp.com/api')
         return data
     },
     {
@@ -31,7 +31,7 @@ export default function Posts(props) {
             const config = {
                 headers: { Authorization: `Bearer ${LoggedInUser.token}`}
             }
-            axios.post(`http://localhost:5000/api/r/${sreddit}/upvote/${spost}`, newUpvote, config)
+            axios.post(`https://fast-dawn-38066.herokuapp.com/api/r/${sreddit}/upvote/${spost}`, newUpvote, config)
                 .then(() => setintervalMs(1))
         } else {
             alert("please log in to upvote")
@@ -45,7 +45,7 @@ export default function Posts(props) {
             const config = {
                 headers: { Authorization: `Bearer ${LoggedInUser.token}`}
             }
-            axios.post(`http://localhost:5000/api/r/${sreddit}/downvote/${spost}`, newDownvote, config)
+            axios.post(`https://fast-dawn-38066.herokuapp.com/api/r/${sreddit}/downvote/${spost}`, newDownvote, config)
                 .then(() => setintervalMs(1))
         } else {
             alert("please log in to upvote")

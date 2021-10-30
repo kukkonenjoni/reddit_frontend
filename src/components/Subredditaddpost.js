@@ -21,7 +21,7 @@ export default function Subredditaddpost() {
             const config = {
                 headers: { Authorization: `Bearer ${LoggedInUser.token}` }
             }
-            axios.post(`http://localhost:5000/api/r/${subreddit}/post`, newPost, config)
+            axios.post(`https://fast-dawn-38066.herokuapp.com/api/r/${subreddit}/post`, newPost, config)
                 .then((res) => {window.location.reload(true)})
         } else {
             window.alert("Please Add Title!")

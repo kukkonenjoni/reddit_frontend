@@ -1,16 +1,12 @@
 import { useState } from "react"
-import { useRecoilState } from 'recoil'
-import { isLogged } from "../Recoil/globalState"
 import axios from 'axios'
 
 export default function Register(props) {
 
-    const [LoggedInUser, setLoggedInUser] = useRecoilState(isLogged)
     const [User, setUser] = useState("")
     const [Email, setEmail] = useState("")
     const [Password, setPassword] = useState("")
     const [ConfirmPassword, setConfirmPassword] = useState("")
-    const [Errors, setErrors] = useState([])
 
     const submitForm = async (event) => {
         event.preventDefault();
@@ -20,7 +16,7 @@ export default function Register(props) {
                 email: Email,
                 password: Password
             }
-            await axios.post("http://localhost:5000/api/authentication/register", new_user)
+            await axios.post("https://fast-dawn-38066.herokuapp.com/api/authentication/register", new_user)
                 .then((data) => {props.handlestate()})
         }
     }
