@@ -10,9 +10,9 @@ import NavigationBar from './components/NavigationBar';
 import axios from 'axios';
 import Main from './components/Main';
 import { QueryClient, QueryClientProvider } from "react-query";
-import { ReactQueryDevtools } from 'react-query/devtools'
 import Subredditcontainer from './components/Subredditcontainer'
 import Commentscontainer from './components/Commentscontainer';
+import "./css/main.css"
 
 export default function App() {
 
@@ -29,8 +29,7 @@ export default function App() {
     };
       axios.post("http://localhost:5000/api/verifytoken", {}, config)
         .then((res) => {
-          setLoggedInUser({user: res.data.name, token: token})
-          console.log(res)
+          setLoggedInUser({user: res.data.name, id:res.data.id, token: token})
         })
         .catch((err) => {
           console.log(err)

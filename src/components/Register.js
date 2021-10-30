@@ -2,7 +2,6 @@ import { useState } from "react"
 import { useRecoilState } from 'recoil'
 import { isLogged } from "../Recoil/globalState"
 import axios from 'axios'
-import "../css/Register.css"
 
 export default function Register(props) {
 
@@ -22,7 +21,6 @@ export default function Register(props) {
                 password: Password
             }
             await axios.post("http://localhost:5000/api/authentication/register", new_user)
-                .then((res) => {console.log(res)})
                 .then((data) => {props.handlestate()})
         }
     }

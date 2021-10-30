@@ -2,7 +2,6 @@ import { useState } from "react"
 import { useRecoilState } from 'recoil'
 import { isLogged } from "../Recoil/globalState"
 import axios from 'axios'
-import "../css/Register.css"
 
 
 export default function Login(props) {
@@ -19,10 +18,7 @@ export default function Login(props) {
         }
         axios.post("http://localhost:5000/api/authentication/login", newUser)
             .then((data) => {if (data) {
-                console.log(data)
-                setLoggedInUser({user: data.data.name, token: data.data.token})
-                console.log("Succesfully logged in")
-                console.log(LoggedInUser)
+                setLoggedInUser({user: data.data.user,id: data.data.id, token: data.data.token})
                 localStorage.setItem('token', data.data.token)
             } else {
                 console.log("False Username")

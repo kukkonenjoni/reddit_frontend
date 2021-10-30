@@ -1,12 +1,6 @@
-import "../css/Navdropdown.css"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSignInAlt, faBolt, faDigitalTachograph, faShieldAlt, faQuestion } from '@fortawesome/free-solid-svg-icons'
-import {
-    BrowserRouter as Router,
-    Switch,
-    Route,
-    Link
-  } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export default function Navdropdown(props) {
     return(

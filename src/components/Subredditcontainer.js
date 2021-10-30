@@ -1,16 +1,20 @@
-import "../css/main.css"
 import { useParams } from "react-router"
 import { useQuery } from "react-query";
 import axios from "axios";
-import Postnav from "./Postnav";
 import Filter from "./Filter";
 import Subredditheader from "./Subredditheader";
 import SubredditInfo from "./SubredditInfo";
 import Subredditposts from "./Subredditposts";
+import Subredditaddpost from "./Subredditaddpost";
+import { useRecoilState } from 'recoil';
+import { isLogged } from "../Recoil/globalState"
+
+
+
 export default function Subredditcontainer() {
 
     const { subreddit } = useParams()
-    console.log(subreddit)
+    const [LoggedInUser] = useRecoilState(isLogged)
 
     const { status, error, data, isFetching } = useQuery("subredditPosts", async () => {
         const { data } = await axios.get(`http://localhost:5000/api/r/${subreddit}`)
@@ -21,20 +25,34 @@ export default function Subredditcontainer() {
             {data ? <>
             <Subredditheader />
             <SubredditInfo subredditName={data ? data.obj.name : ""} subredditDesc={data ? data.obj.description : ""}/>
-            <div className="background"style={{backgroundColor: "#0C0C0C", minHeight: "92.9vh", display: "flex", justifyContent:"center"}}>
-                <div className="container" style={{width: "64rem"}}>
+            <div className="main-background">
+                <div className="main-container">
                     <div className="main-content" style={{marginTop: "25px"}}>
-                        <div className="postandfilter">
+                        <div className="main-postandfilter">
+                            {LoggedInUser ? <Subredditaddpost /> : ""}
                             <Filter />
                             <Subredditposts data={data ? data.obj.posts : ""}/>
                         </div>
                         <div className="information">
                             <h1>TESTinformation</h1>
+                            {console.log(data.obj.posts)}
                         </div>
                     </div>
                 </div>
             </div>
-            </>: "Add 404 page here, subredditcontainer.js"}
+            </>:
+            <div style={loadingstyle}>
+                <h1>Loading...</h1>
+            </div>}
         </div>
     )
+}
+
+const loadingstyle = {
+    backgroundColor:"rgb(50, 50, 50)",
+    width: "100vw",
+    height: "100vh",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center"
 }

@@ -1,20 +1,21 @@
 import Postnav from "./Postnav"
 import Filter from "./Filter"
 import Posts from "./Posts"
-import "../css/main.css"
+import MainSidemenu from "./MainSidemenu"
+import MainCreatecommunity from "./MainCreatecommunity"
 
 export default function Main() {
     return(
-        <div className="background"style={{backgroundColor: "#0C0C0C", minHeight: "92.9vh", display: "flex", justifyContent:"center"}}>
-            <div className="container" style={{width: "64rem"}}>
+        <div className="main-background">
+            <div className="main-container">
                 <Postnav />
                 <div className="main-content">
-                    <div className="postandfilter">
+                    <div className="main-postandfilter">
                         <Filter />
                         <Posts />
                     </div>
-                    <div className="information">
-                        <h1>TESTinformation</h1>
+                    <div className="sidebar">
+                        <MainCreatecommunity />
                     </div>
                 </div>
             </div>

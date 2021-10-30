@@ -1,16 +1,50 @@
 import { faComment, faChevronDown, faChevronUp } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import calccomments from '../helpers/calccomments'
+import { useRecoilState } from 'recoil'
+import { isLogged } from '../Recoil/globalState'
+import axios from 'axios'
 
 export default function Commentspost({ data }) {
 
+    const [LoggedInUser] = useRecoilState(isLogged)
+
+    const upvote = (sreddit, spost, sup, sdown) => {
+        if (LoggedInUser) {
+            const newUpvote = {
+                createdBy: LoggedInUser.id
+            }
+            const config = {
+                headers: { Authorization: `Bearer ${LoggedInUser.token}`}
+            }
+            axios.post(`http://localhost:5000/api/r/${sreddit}/upvote/${spost}`, newUpvote, config)
+                .then((res) => res.status !== 400 ? window.location.reload(true) : "")
+        } else {
+            alert("please log in to upvote")
+        }
+    }
+    const downvote = (sreddit, spost, sup, sdown) => {
+        if (LoggedInUser) {
+            const newDownvote = {
+                createdBy: LoggedInUser.id
+            }
+            const config = {
+                headers: { Authorization: `Bearer ${LoggedInUser.token}`}
+            }
+            axios.post(`http://localhost:5000/api/r/${sreddit}/downvote/${spost}`, newDownvote, config)
+                .then((res) => res.status !== 400 ? window.location.reload(true) : "")
+                
+        } else {
+            alert("please log in to upvote")
+        }
+    }
 
     return(
         <div className="post-container" style={contStyle}>
             <div className="post-upvotes" style={{backgroundColor: "#212222"}}>
-                <FontAwesomeIcon icon={faChevronUp} style={{fontSize:"30px", color:"rgb(231, 231, 231)"}}/>
-                <h2 style={{fontSize:"20px", color:"rgb(231, 231, 231)"}}>0</h2>
-                <FontAwesomeIcon icon={faChevronDown} style={{fontSize:"30px", color:"rgb(231, 231, 231)"}}/>
+                <FontAwesomeIcon icon={faChevronUp} style={{fontSize:"30px", color:"rgb(231, 231, 231)"}} onClick={() => upvote(data.subreddit.name, data.title)}/>
+                <h2 style={{fontSize:"20px", color:"rgb(231, 231, 231)"}}>{data? data.upvotes.length - data.downvotes.length: ""}</h2>
+                <FontAwesomeIcon icon={faChevronDown} style={{fontSize:"30px", color:"rgb(231, 231, 231)"}} onClick={() => downvote(data.subreddit.name, data.title)}/>
             </div>
             <div className="post">
                 <div className="post-information">

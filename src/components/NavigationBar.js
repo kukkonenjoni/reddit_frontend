@@ -11,20 +11,25 @@ import { faUser, faArrowDown } from '@fortawesome/free-solid-svg-icons'
 import Navdropdown from "./Navdropdown"
 
 export default function NavigationBar(props) {
-    const [LoggedInUser] = useRecoilState(isLogged)
+    const [LoggedInUser, setLoggedInUser] = useRecoilState(isLogged)
     const [ShowModalLogin, setShowModalLogin] = useState(false)
     const [ShowModalRegister, setShowModalRegister] = useState(false)
     const [ShowDropDown, setShowDropDown] = useState(false)
 
+    const LogOut = () => {
+        setLoggedInUser("")
+        localStorage.removeItem("token")
+    }
 
     if (LoggedInUser) {
         return (
-        <div className="navbar" style={navbarStyle}>
+            <div className="navbar" style={navbarStyle}>
                 <Link to="/">
                     <img className="nav-img" style={imgStyle} src="https://www.logo.wine/a/logo/Reddit/Reddit-Horizontal-White-Dark-Background-Logo.wine.svg" alt="Reddit Logo" />
                 </Link>
                 <input style={navsearchStyle} className="nav-search"type="search" id="search" placeholder="search.."></input>
                 <h1 style={{color: "white"}}>{LoggedInUser.user}</h1>
+                <button onClick={() => LogOut()}>Log Out</button>
             </div>
         )
     }
@@ -103,5 +108,6 @@ const registerbuttonStyle = {
     width: "5rem",
     borderRadius: "30px",
     border: "black solid thin",
-    margin: "0"
+    margin: "0",
+    backgroundColor: "rgb(230,230,230)"
 }
