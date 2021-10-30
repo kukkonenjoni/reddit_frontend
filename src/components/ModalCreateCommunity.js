@@ -21,9 +21,7 @@ export default function ModalCreateCommunity() {
             headers: { Authorization: `Bearer ${LoggedInUser.token}` }
         };
         axios.post("https://fast-dawn-38066.herokuapp.com/api/r/createcommunity", newSubreddit, config)
-            .then(res => res.status == 200 ?  setCommunity("") : "")
-            .then(res => res.status == 200 ?  setDescription("") : "")
-            .then(() => window.location.replace(`https://617da0fbaa7a1a000813e8b3--pensive-jackson-17f322.netlify.app/r/${Community}`))
+            .then(() => window.location.replace(`https://617da3ec37c15b0007aacfd5--pensive-jackson-17f322.netlify.app/r/${Community}`))
 
     }
 
