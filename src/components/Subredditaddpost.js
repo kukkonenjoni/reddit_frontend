@@ -13,10 +13,10 @@ export default function Subredditaddpost() {
 
     const Submitpost = (event) => {
         event.preventDefault()
-        if (Title) {
+        if (Title && Text) {
             const newPost = {
                 title: Title,
-                content: Text ? Text : ""
+                content: Text
             }
             const config = {
                 headers: { Authorization: `Bearer ${LoggedInUser.token}` }
@@ -33,7 +33,7 @@ export default function Subredditaddpost() {
         <div style={filterstyle}>
             <form style={formstyle} onSubmit={Submitpost}>
                 <input type="text" placeholder="Title" style={inputstyletitle} onChange={(e) => setTitle(e.target.value)}></input>
-                <textarea style={textareastyle} type="text" placeholder="Text (optional)" onChange={(e) => setText(e.target.value)}></textarea>
+                <textarea style={textareastyle} type="text" placeholder="Text" onChange={(e) => setText(e.target.value)}></textarea>
                 <button type="submit" style={inputstyletext}>Create post</button>
             </form>
         </div>
